@@ -83,3 +83,48 @@ body {
 .form-input-light::placeholder { color: hsl(270 15% 65%); }
 .form-input-light:focus { border-color: hsl(275 70% 55%); box-shadow: 0 0 0 3px hsl(275 70% 55% / 0.12); }
 .form-input-light option { background: white; color: hsl(270 20% 12%); }
+
+/* ── Mobile Responsive Fixes ─────────────────────────── */
+@media (max-width: 768px) {
+  /* Admin sidebar collapses on mobile */
+  .admin-sidebar { display: none; }
+
+  /* Hero H1 tighter on small screens */
+  h1 { word-break: break-word; }
+
+  /* Featured blog card stacks on mobile */
+  article[style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Offer cards stack */
+  .offer-grid { grid-template-columns: 1fr !important; }
+
+  /* Table overflow */
+  table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* Admin main content full width */
+  main[style*="margin-left: 260px"] { margin-left: 0 !important; }
+}
+
+/* ── Reduced motion ──────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .hero-eyebrow, .hero-h1, .hero-sub, .hero-cta { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .marquee-track { animation: none !important; }
+}
+
+/* ── Focus styles (accessibility) ────────────────────── */
+:focus-visible {
+  outline: 2px solid hsl(275 70% 55%);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Selection color ────────────────────────────────── */
+::selection { background: hsl(275 70% 55% / 0.2); }
+
+/* ── Smooth image loading ───────────────────────────── */
+img { transition: opacity 0.3s ease; }
+img[loading="lazy"] { opacity: 0; }
+img[loading="lazy"].loaded { opacity: 1; }

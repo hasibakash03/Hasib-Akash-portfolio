@@ -1,0 +1,15 @@
+{
+  "name": "Hasib Akash — Brand Strategist",
+  "short_name": "Hasib Akash",
+  "description": "Strategy-first brand consulting for founders in Bangladesh.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0520",
+  "theme_color": "#5B2D8E",
+  "icons": [
+    { "src": "/favicon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

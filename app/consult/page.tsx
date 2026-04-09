@@ -4,27 +4,50 @@ import ScrollReveal from "@/components/ScrollReveal";
 import ContactForm from "@/components/ContactForm";
 import OfferCards from "@/components/OfferCards";
 import { CheckCircle2, ArrowRight } from "lucide-react";
+import type { Metadata } from "next";
 
-export const metadata = { title: "Work With Me — Hasib Akash", description: "Three ways to work with Hasib Akash — from a free strategy diagnostic to a full growth strategy intensive." };
+export const metadata: Metadata = {
+  title: "Work With Me",
+  description:
+    "Three ways to work with Hasib Akash — from a free 30-minute Strategy Diagnostic to a full Growth Strategy Intensive. Strategy-first consulting for Bangladeshi founders.",
+  openGraph: {
+    title: "Work With Me — Hasib Akash",
+    description: "Book a free Strategy Diagnostic. No pitch, no pressure — just clarity on what's holding your business back.",
+    images: [{ url: "/og?title=Strategic+consulting+for+founders+who+are+done+guessing&type=home", width: 1200, height: 630 }],
+  },
+};
+
+const consultSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Brand Strategy Consulting",
+  provider: { "@type": "Person", name: "Hasib Akash" },
+  serviceType: "Brand Strategy & Growth Consulting",
+  areaServed: { "@type": "Country", name: "Bangladesh" },
+  offers: [
+    { "@type": "Offer", name: "Strategy Diagnostic", price: "0", priceCurrency: "BDT", description: "Free 30-minute strategy call" },
+    { "@type": "Offer", name: "Brand Blueprint Session", price: "9900", priceCurrency: "BDT", description: "90-minute deep-dive with Brand Blueprint document" },
+    { "@type": "Offer", name: "Growth Strategy Intensive", price: "29900", priceCurrency: "BDT", description: "3 sessions over 2 weeks with complete Growth Strategy document" },
+  ],
+};
 
 const acc = "hsl(275 70% 55%)";
 
 const faqs = [
   { q: "What happens on the free diagnostic call?", a: "We spend 30 minutes going through your current brand, marketing, and growth situation. I ask the right questions, identify the single biggest constraint holding your business back, and give you a verbal diagnosis plus a 1-page written summary after the call. No pitch, no upsell pressure. You leave with clarity — whether you continue working with me or not." },
-  { q: "How is this different from hiring a marketing agency?", a: "Agencies execute. I strategize. Most businesses hire agencies before they have a clear strategy, then wonder why the execution isn't producing results. We fix the foundation first — clear positioning, offer design, and growth architecture — so any agency you hire after this will actually produce results. I also work directly with TradeFigur for clients who need full execution support after the strategic work is done." },
-  { q: "What if I'm just starting out and don't have much revenue yet?", a: "The Strategy Diagnostic is designed for exactly this — founders who are just starting out and want to build on a solid foundation from day one. It's far better to get positioning and offer design right at the beginning than to spend 12 months executing a flawed strategy and then rebuild. Early-stage founders often get the most value from the Diagnostic." },
-  { q: "Do you help with execution too, or just strategy?", a: "Strategy is my primary focus in the consulting practice. For execution — brand identity design, content strategy, social media management, campaigns — that's what TradeFigur handles. The consulting naturally identifies what execution is needed, and we can discuss TradeFigur's agency services as a follow-on for clients who need full-service support." },
-  { q: "How do I know this will work for my specific business?", a: "I back both paid tiers with a guarantee. For the Blueprint Session: if you don't walk away with at least 3 actionable insights you haven't considered before, I'll refund you in full. For the Growth Intensive: if the strategy document doesn't give you a clear, executable growth path you believe in, I'll revise it at no extra cost until it does. The risk is on me." },
+  { q: "How is this different from hiring a marketing agency?", a: "Agencies execute. I strategize. Most businesses hire agencies before they have a clear strategy, then wonder why the execution isn't producing results. We fix the foundation first — clear positioning, offer design, and growth architecture — so any agency you hire after this will actually produce results." },
+  { q: "What if I'm just starting out and don't have much revenue yet?", a: "The Strategy Diagnostic is designed for exactly this — founders who are just starting out and want to build on a solid foundation from day one. It's far better to get positioning and offer design right at the beginning than to spend 12 months executing a flawed strategy and then rebuild." },
+  { q: "Do you help with execution too, or just strategy?", a: "Strategy is my primary focus in the consulting practice. For execution — brand identity design, content strategy, social media management, campaigns — that's what TradeFigur handles. The consulting naturally identifies what execution is needed, and we can discuss TradeFigur's agency services as a follow-on." },
+  { q: "How do I know this will work for my specific business?", a: "I back both paid tiers with a guarantee. For the Blueprint Session: if you don't walk away with at least 3 actionable insights you haven't considered before, I'll refund you in full. For the Growth Intensive: if the strategy document doesn't give you a clear, executable growth path you believe in, I'll revise it at no extra cost until it does." },
   { q: "How long does it take to see results from the strategy work?", a: "Strategic clarity shows up immediately — from the first session, most clients report seeing their business situation differently. Measurable business results depend on how quickly you execute. Clients who implement consistently typically see meaningful changes in conversion rates, lead quality, and positioning clarity within 60-90 days." },
 ];
 
 export default function ConsultPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(consultSchema) }} />
       <Navbar />
       <main style={{ paddingTop: "5.5rem", minHeight: "100vh" }}>
-
-        {/* Hero */}
         <section style={{ background: "linear-gradient(135deg,hsl(270 60% 10%) 0%,hsl(275 65% 20%) 100%)", padding: "5rem 1.5rem 4.5rem", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
           <div style={{ position: "absolute", right: "5%", bottom: "-30%", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle,hsl(275 70% 55%/0.18) 0%,transparent 70%)", pointerEvents: "none" }} />
@@ -46,16 +69,12 @@ export default function ConsultPage() {
           </div>
         </section>
 
-        {/* Offer Cards — client component */}
         <section style={{ background: "hsl(270 30% 98%)", padding: "5rem 1.5rem" }}>
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-            <ScrollReveal>
-              <OfferCards />
-            </ScrollReveal>
+            <ScrollReveal><OfferCards /></ScrollReveal>
           </div>
         </section>
 
-        {/* FAQ */}
         <section style={{ background: "hsl(270 25% 95%)", padding: "5rem 1.5rem" }}>
           <div style={{ maxWidth: 760, margin: "0 auto" }}>
             <ScrollReveal>
@@ -80,7 +99,6 @@ export default function ConsultPage() {
           </div>
         </section>
 
-        {/* Application Form */}
         <section id="apply" style={{ background: "linear-gradient(135deg,hsl(270 60% 25%) 0%,hsl(280 65% 40%) 50%,hsl(290 55% 50%) 100%)", padding: "5rem 1.5rem", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
           <div style={{ maxWidth: 660, margin: "0 auto", position: "relative", zIndex: 1 }}>
@@ -103,7 +121,6 @@ export default function ConsultPage() {
             </ScrollReveal>
           </div>
         </section>
-
       </main>
       <Footer />
     </>

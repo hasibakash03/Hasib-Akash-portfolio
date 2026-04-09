@@ -3,25 +3,40 @@ import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 import ProjectCard from "@/components/ProjectCard";
 import Link from "next/link";
-import { ArrowRight, Layers, User, BarChart2, FileText } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { fetchPublishedProjects } from "@/lib/data";
+import type { Metadata } from "next";
 
-export const metadata = { title: "Projects — Hasib Akash", description: "Case studies from brands I've helped position, build, and grow." };
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "Case studies from brands Hasib Akash has helped position, build, and grow. Strategy-first work from Chattogram, Bangladesh.",
+  openGraph: {
+    title: "Projects — Hasib Akash",
+    description: "Case studies from brands I've helped position, build, and grow.",
+    images: [{ url: "/og?title=Work+That+Speaks&type=project", width: 1200, height: 630 }],
+  },
+};
 
 const acc = "hsl(275 70% 55%)";
 const categories = ["All", "Brand Strategy", "Personal Branding", "Business Systems", "Content Strategy"];
-const projects = [
+
+const staticProjects = [
   { slug: "motoVessel-brand-identity", title: "MotoVessel", category: "Brand Strategy", client: "MotoVessel Automotive", year: "2025", thumbnail: "hsl(270 55% 88%)", letter: "M", oneLiner: "Repositioned an automotive parts brand from generic retailer to trusted authority in Chittagong.", result: "40% increase in walk-in conversions after positioning overhaul.", tags: ["Brand Identity", "Positioning", "Automotive"] },
   { slug: "des-iiuc-funnel", title: "DES — IIUC", category: "Content Strategy", client: "IIUC Developer & Entrepreneurs Society", year: "2026", thumbnail: "hsl(275 50% 88%)", letter: "D", oneLiner: "Built a complete website funnel strategy and content system for a university entrepreneurship society.", result: "Full funnel strategy designed and delivered.", tags: ["Content Strategy", "Funnel Design", "Education"] },
   { slug: "tradefigur-brand", title: "TradeFigur", category: "Brand Strategy", client: "TradeFigur Agency", year: "2024", thumbnail: "hsl(280 45% 88%)", letter: "T", oneLiner: "Designed the complete brand identity and positioning for a strategy-first creative agency.", result: "Clear uncontested position in Chittagong consulting market.", tags: ["Brand Identity", "Agency", "Positioning"] },
   { slug: "doctor-personal-brand", title: "Medical Authority Brand", category: "Personal Branding", client: "Healthcare Professional", year: "2025", thumbnail: "hsl(265 55% 90%)", letter: "M", oneLiner: "Grew a doctor's social presence to a significant local following through positioning-first content.", result: "Location-based follower growth and increased patient inquiries.", tags: ["Personal Brand", "Healthcare", "Social Media"] },
 ];
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const dbProjects = await fetchPublishedProjects();
+  const projects = dbProjects
+    ? dbProjects.map(p => ({ slug: p.slug, title: p.title, category: p.category, client: p.clientName, year: p.year, thumbnail: p.thumbnailUrl || "hsl(270 55% 88%)", letter: p.title[0], oneLiner: p.oneLiner, result: p.result, tags: Array.isArray(p.tags) ? p.tags as string[] : [] }))
+    : staticProjects;
+
   return (
     <>
       <Navbar />
       <main style={{ paddingTop: "5.5rem", minHeight: "100vh" }}>
-        {/* Hero */}
         <section style={{ background: "linear-gradient(135deg,hsl(270 60% 10%) 0%,hsl(275 65% 20%) 100%)", padding: "5rem 1.5rem 4rem", position: "relative", overflow: "hidden" }}>
           <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)", backgroundSize: "60px 60px" }} />
           <div style={{ position: "absolute", right: "-5%", top: "50%", transform: "translateY(-50%)", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle,hsl(275 70% 55%/0.18) 0%,transparent 70%)", pointerEvents: "none" }} />
@@ -32,16 +47,14 @@ export default function ProjectsPage() {
           </div>
         </section>
 
-        {/* Category filter */}
         <section style={{ background: "white", borderBottom: "1px solid hsl(270 20% 90%)", padding: "0 1.5rem" }}>
           <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", gap: "0.5rem", overflowX: "auto", padding: "1rem 0" }}>
             {categories.map((cat, i) => (
-              <div key={cat} style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", padding: "0.45rem 1rem", borderRadius: 9999, whiteSpace: "nowrap", fontSize: "0.82rem", fontWeight: 700, cursor: "pointer", background: i === 0 ? acc : "hsl(270 30% 96%)", color: i === 0 ? "white" : "hsl(270 15% 45%)", border: i === 0 ? "none" : "1px solid hsl(270 20% 88%)", flexShrink: 0 }}>{cat}</div>
+              <div key={cat} style={{ display: "inline-flex", padding: "0.45rem 1rem", borderRadius: 9999, whiteSpace: "nowrap", fontSize: "0.82rem", fontWeight: 700, cursor: "pointer", background: i === 0 ? acc : "hsl(270 30% 96%)", color: i === 0 ? "white" : "hsl(270 15% 45%)", border: i === 0 ? "none" : "1px solid hsl(270 20% 88%)", flexShrink: 0 }}>{cat}</div>
             ))}
           </div>
         </section>
 
-        {/* Grid */}
         <section style={{ background: "hsl(270 30% 98%)", padding: "4rem 1.5rem 6rem" }}>
           <div style={{ maxWidth: 1200, margin: "0 auto" }}>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(340px,1fr))", gap: "1.75rem" }}>
