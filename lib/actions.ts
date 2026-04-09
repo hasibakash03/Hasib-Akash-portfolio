@@ -247,3 +247,27 @@ export async function updateSubmissionStatus(id: number, status: string) {
   await db.update(formSubmissions).set({ status }).where(eq(formSubmissions.id, id));
   return { success: true };
 }
+
+// ── Enhanced form submission (Phase 4) ───────────────
+export async function submitContactFormFull(data: {
+  name: string; email: string; phone?: string; businessName: string;
+  website?: string; revenueRange: string; challenge: string; tierInterest: string;
+}) {
+  // Save to DB
+  try {
+    await db.insert(formSubmissions).values(data);
+  } catch (err) {
+    console.error("DB insert error:", err);
+    // Still try to send email even if DB fails
+  }
+
+  // Send Resend notification
+  try {
+    const { sendSubmissionNotification } = await import("@/lib/resend");
+    await sendSubmissionNotification(data);
+  } catch (err) {
+    console.error("Email error:", err);
+  }
+
+  return { success: true };
+}
