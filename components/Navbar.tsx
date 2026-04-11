@@ -22,16 +22,16 @@ export default function Navbar() {
       const isScrolled = window.scrollY > 20;
       setScrolled(isScrolled);
       // At the top of any page → transparent navbar, always white text (all heroes are dark)
-      if (\!isScrolled) { setDark(true); return; }
+      if (!isScrolled) { setDark(true); return; }
       // Scrolled on a non-home page → white backdrop, always use dark text
-      if (\!isHome) { setDark(false); return; }
+      if (!isHome) { setDark(false); return; }
       // Home page: detect which section the navbar is overlapping
       const midY = window.scrollY + 80;
       const ids = ["section-hero", "section-process", "section-cta"];
       let inDark = false;
       for (const id of ids) {
         const el = document.getElementById(id);
-        if (\!el) continue;
+        if (!el) continue;
         const top = el.getBoundingClientRect().top + window.scrollY;
         if (midY >= top && midY <= top + el.offsetHeight) { inDark = true; break; }
       }
@@ -67,7 +67,7 @@ export default function Navbar() {
             <Link href="/consult" className="hidden md:inline-flex" style={{ alignItems: "center", gap: "0.4rem", padding: "0.6rem 1.35rem", background: "hsl(275 70% 55%)", color: "white", borderRadius: 9999, fontWeight: 700, fontSize: "0.85rem", textDecoration: "none" }}>
               Book Consultation →
             </Link>
-            <button onClick={() => setMenuOpen(\!menuOpen)} className="md:hidden" style={{ background: "none", border: "none", cursor: "pointer", color: dark ? "white" : "hsl(270 20% 12%)", padding: "0.25rem" }}>
+            <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden" style={{ background: "none", border: "none", cursor: "pointer", color: dark ? "white" : "hsl(270 20% 12%)", padding: "0.25rem" }}>
               {menuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
