@@ -1,30 +1,46 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [dark, setDark] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const isScrolled = window.scrollY > 20;
+      setScrolled(isScrolled);
+      // At the top of any page → transparent navbar, always white text (all heroes are dark)
+      if (\!isScrolled) { setDark(true); return; }
+      // Scrolled on a non-home page → white backdrop, always use dark text
+      if (\!isHome) { setDark(false); return; }
+      // Home page: detect which section the navbar is overlapping
       const midY = window.scrollY + 80;
-      const ids = ["section-hero","section-process","section-cta"];
-      let inDark = window.scrollY < 80;
+      const ids = ["section-hero", "section-process", "section-cta"];
+      let inDark = false;
       for (const id of ids) {
         const el = document.getElementById(id);
-        if (!el) continue;
+        if (\!el) continue;
         const top = el.getBoundingClientRect().top + window.scrollY;
         if (midY >= top && midY <= top + el.offsetHeight) { inDark = true; break; }
       }
       setDark(inDark);
     };
+    handleScroll(); // run on mount so initial state is correct
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHome]);
 
   return (
     <header style={{
@@ -42,25 +58,28 @@ export default function Navbar() {
             Hasib Akash
           </Link>
           <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
-            <div style={{ display: "flex", gap: "1.75rem" }} className="hidden md:flex">
-              {[{href:"/projects",label:"Projects"},{href:"/blog",label:"Blog"}].map(l => (
-                <Link key={l.href} href={l.href} style={{ textDecoration: "none", fontWeight: 600, fontSize: "0.9rem", color: dark ? "rgba(255,255,255,0.8)" : "hsl(270 15% 40%)", transition: "color 0.2s" }}>{l.label}</Link>
+            {/* desktop nav — no inline display style, let Tailwind hidden md:flex control visibility */}
+            <div className="hidden md:flex" style={{ gap: "1.75rem" }}>
+              {navLinks.map((l) => (
+                <Link key={l.href} href={l.href} style={{ textDecoration: "none", fontWeight: 600, fontSize: "0.9rem", color: dark ? "rgba(255,255,255,0.85)" : "hsl(270 15% 40%)", transition: "color 0.2s" }}>{l.label}</Link>
               ))}
             </div>
-            <Link href="/consult" className="hidden md:inline-flex" style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", padding: "0.6rem 1.35rem", background: "hsl(275 70% 55%)", color: "white", borderRadius: 9999, fontWeight: 700, fontSize: "0.85rem", textDecoration: "none" }}>
+            <Link href="/consult" className="hidden md:inline-flex" style={{ alignItems: "center", gap: "0.4rem", padding: "0.6rem 1.35rem", background: "hsl(275 70% 55%)", color: "white", borderRadius: 9999, fontWeight: 700, fontSize: "0.85rem", textDecoration: "none" }}>
               Book Consultation →
             </Link>
-            <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden" style={{ background: "none", border: "none", cursor: "pointer", color: dark ? "white" : "hsl(270 20% 12%)", padding: "0.25rem" }}>
+            <button onClick={() => setMenuOpen(\!menuOpen)} className="md:hidden" style={{ background: "none", border: "none", cursor: "pointer", color: dark ? "white" : "hsl(270 20% 12%)", padding: "0.25rem" }}>
               {menuOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </nav>
         {menuOpen && (
           <div style={{ background: dark ? "rgba(20,8,40,0.97)" : "rgba(255,255,255,0.97)", backdropFilter: "blur(20px)", borderTop: "1px solid rgba(255,255,255,0.1)", padding: "1.5rem", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-            {[{href:"/projects",label:"Projects"},{href:"/blog",label:"Blog"}].map(l => (
+            {navLinks.map((l) => (
               <Link key={l.href} href={l.href} onClick={() => setMenuOpen(false)} style={{ color: dark ? "rgba(255,255,255,0.85)" : "hsl(270 15% 30%)", fontWeight: 600, fontSize: "1rem", textDecoration: "none" }}>{l.label}</Link>
             ))}
-            <Link href="/consult" onClick={() => setMenuOpen(false)} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", padding: "0.75rem 1.5rem", background: "hsl(275 70% 55%)", color: "white", borderRadius: 9999, fontWeight: 700, textDecoration: "none" }}>Book Consultation →</Link>
+            <Link href="/consult" onClick={() => setMenuOpen(false)} style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", padding: "0.75rem 1.5rem", background: "hsl(275 70% 55%)", color: "white", borderRadius: 9999, fontWeight: 700, textDecoration: "none" }}>
+              Book Consultation →
+            </Link>
           </div>
         )}
       </div>

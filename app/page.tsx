@@ -91,6 +91,38 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* SOCIAL PROOF — DB-powered testimonials */}
+      <section style={{ background: "hsl(270 25% 95%)", padding: "6rem 1.5rem" }}>
+        <div style={maxW}>
+          <ScrollReveal>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1rem", marginBottom: "4rem", textAlign: "center", maxWidth: 600, marginLeft: "auto", marginRight: "auto" }}>
+              {[["15+","Businesses Consulted"],["3×","Avg. Growth Impact"],["100%","Strategy-First Approach"]].map(([n,l]) => (
+                <div key={l} style={{ padding: "1.5rem 1rem", background: "white", borderRadius: "1rem", border: "1px solid hsl(270 20% 88%)" }}>
+                  <div style={{ fontSize: "clamp(1.8rem,4vw,2.5rem)", fontWeight: 900, color: "hsl(270 60% 40%)", lineHeight: 1 }}>{n}</div>
+                  <div style={{ fontSize: "0.78rem", fontWeight: 600, color: "hsl(270 15% 50%)", marginTop: "0.4rem" }}>{l}</div>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "1.5rem" }}>
+            {testimonialData.map((t, i) => (
+              <ScrollReveal key={t.id} delay={i * 120}>
+                <div style={{ background: "white", border: "1px solid hsl(270 20% 88%)", borderRadius: "1.25rem", padding: "2rem", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+                  <div style={{ display: "flex", gap: "0.25rem" }}>
+                    {Array.from({ length: t.stars }).map((_, si) => <Star key={si} size={16} fill={acc} style={{ color: acc }} />)}
+                  </div>
+                  <p style={{ fontSize: "0.925rem", color: "hsl(270 15% 35%)", lineHeight: 1.75, margin: 0, fontStyle: "italic" }}>&ldquo;{t.quote}&rdquo;</p>
+                  <div>
+                    <div style={{ fontWeight: 700, fontSize: "0.9rem", color: "hsl(270 20% 15%)" }}>{t.authorName}</div>
+                    <div style={{ fontSize: "0.8rem", color: "hsl(270 15% 55%)", marginTop: "0.1rem" }}>{t.authorRole}</div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* INSIGHT */}
       <section style={{ background: "hsl(270 25% 95%)", padding: "6rem 1.5rem" }}>
         <div style={maxW}>
@@ -199,38 +231,6 @@ export default async function Home() {
                 ))}
               </div>
             </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* SOCIAL PROOF — DB-powered testimonials */}
-      <section style={{ background: "hsl(270 25% 95%)", padding: "6rem 1.5rem" }}>
-        <div style={maxW}>
-          <ScrollReveal>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1rem", marginBottom: "4rem", textAlign: "center", maxWidth: 600, marginLeft: "auto", marginRight: "auto" }}>
-              {[["15+","Businesses Consulted"],["3×","Avg. Growth Impact"],["100%","Strategy-First Approach"]].map(([n,l]) => (
-                <div key={l} style={{ padding: "1.5rem 1rem", background: "white", borderRadius: "1rem", border: "1px solid hsl(270 20% 88%)" }}>
-                  <div style={{ fontSize: "clamp(1.8rem,4vw,2.5rem)", fontWeight: 900, color: "hsl(270 60% 40%)", lineHeight: 1 }}>{n}</div>
-                  <div style={{ fontSize: "0.78rem", fontWeight: 600, color: "hsl(270 15% 50%)", marginTop: "0.4rem" }}>{l}</div>
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "1.5rem" }}>
-            {testimonialData.map((t, i) => (
-              <ScrollReveal key={t.id} delay={i * 120}>
-                <div style={{ background: "white", border: "1px solid hsl(270 20% 88%)", borderRadius: "1.25rem", padding: "2rem", display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-                  <div style={{ display: "flex", gap: "0.25rem" }}>
-                    {Array.from({ length: t.stars }).map((_, si) => <Star key={si} size={16} fill={acc} style={{ color: acc }} />)}
-                  </div>
-                  <p style={{ fontSize: "0.925rem", color: "hsl(270 15% 35%)", lineHeight: 1.75, margin: 0, fontStyle: "italic" }}>&ldquo;{t.quote}&rdquo;</p>
-                  <div>
-                    <div style={{ fontWeight: 700, fontSize: "0.9rem", color: "hsl(270 20% 15%)" }}>{t.authorName}</div>
-                    <div style={{ fontSize: "0.8rem", color: "hsl(270 15% 55%)", marginTop: "0.1rem" }}>{t.authorRole}</div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
           </div>
         </div>
       </section>
