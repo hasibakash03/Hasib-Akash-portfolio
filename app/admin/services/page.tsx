@@ -18,7 +18,7 @@ export default function ServiceCardsAdmin() {
     setEditing(p => p ? { ...p, [e.target.name]: e.target.name === "sortOrder" ? Number(e.target.value) : e.target.value } : p);
 
   const save = async (e: React.FormEvent) => {
-    e.preventDefault(); if (\!editing) return;
+    e.preventDefault(); if (!editing) return;
     setLoading(true);
     await upsertServiceCard(editing as any);
     setLoading(false); setEditing(null); load();

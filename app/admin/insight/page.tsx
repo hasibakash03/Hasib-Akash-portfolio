@@ -39,7 +39,7 @@ export default function InsightAdmin() {
           <AdminInput label="Card 2 Title" name="card2Title" value={form.card2Title} onChange={ch} required placeholder="Systems before tactics" />
           <AdminInput label="Card 2 Description" name="card2Desc" value={form.card2Desc} onChange={ch} required rows={3} placeholder="Tactics without systems produce unpredictable results..." />
         </AdminCard>
-        <SaveButton loading={loading} label={saved ? "Saved\!" : "Save Insight Section"} />
+        <SaveButton loading={loading} label={saved ? "Saved!" : "Save Insight Section"} />
       </form>
     </div>
   );

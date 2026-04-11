@@ -53,7 +53,7 @@ export default function AboutAdmin() {
           <AdminInput label="Badge Title" name="badge3Title" value={form.badge3Title} onChange={ch} required placeholder="Strategy Before Execution" />
           <AdminInput label="Badge Description" name="badge3Desc" value={form.badge3Desc} onChange={ch} required rows={2} placeholder="I don't run ads until the strategy is clear..." />
         </AdminCard>
-        <SaveButton loading={loading} label={saved ? "Saved\!" : "Save About Section"} />
+        <SaveButton loading={loading} label={saved ? "Saved!" : "Save About Section"} />
       </form>
     </div>
   );
