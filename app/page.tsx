@@ -56,7 +56,7 @@ export default async function Home() {
               </Link>
             </div>
             <div className="hero-cta" style={{ display: "flex", gap: "2.5rem", marginTop: "2.75rem", flexWrap: "wrap" }}>
-              {[["15+","Businesses Consulted"],["3Ã","Avg. Growth Impact"],["100%","Strategy-First"]].map(([n,l]) => (
+              {[["15+","Businesses Consulted"],["3×","Avg. Growth Impact"],["100%","Strategy-First"]].map(([n,l]) => (
                 <div key={l}><div style={{ fontSize: "1.6rem", fontWeight: 900, color: "white", lineHeight: 1 }}>{n}</div><div style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.5)", marginTop: "0.2rem", fontWeight: 500 }}>{l}</div></div>
               ))}
             </div>
@@ -92,12 +92,12 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* SOCIAL PROOF â DB-powered testimonials */}
+      {/* SOCIAL PROOF — DB-powered testimonials */}
       <section style={{ background: "hsl(270 25% 95%)", padding: "6rem 1.5rem" }}>
         <div style={maxW}>
           <ScrollReveal>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "1rem", marginBottom: "4rem", textAlign: "center", maxWidth: 600, marginLeft: "auto", marginRight: "auto" }}>
-              {[["15+","Businesses Consulted"],["3Ã","Avg. Growth Impact"],["100%","Strategy-First Approach"]].map(([n,l]) => (
+              {[["15+","Businesses Consulted"],["3×","Avg. Growth Impact"],["100%","Strategy-First Approach"]].map(([n,l]) => (
                 <div key={l} style={{ padding: "1.5rem 1rem", background: "white", borderRadius: "1rem", border: "1px solid hsl(270 20% 88%)" }}>
                   <div style={{ fontSize: "clamp(1.8rem,4vw,2.5rem)", fontWeight: 900, color: "hsl(270 60% 40%)", lineHeight: 1 }}>{n}</div>
                   <div style={{ fontSize: "0.78rem", fontWeight: 600, color: "hsl(270 15% 50%)", marginTop: "0.4rem" }}>{l}</div>
@@ -131,12 +131,12 @@ export default async function Home() {
             <ScrollReveal>
               <p style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: acc, marginBottom: "1rem" }}>The Insight</p>
               <h2 style={{ fontSize: "clamp(1.6rem,3.5vw,2.4rem)", fontWeight: 900, lineHeight: 1.2, letterSpacing: "-0.02em", color: "hsl(270 20% 12%)", margin: "0 0 1.25rem" }}>Strategy isn&apos;t what happens after the logo. It&apos;s what makes the logo <em style={{ fontStyle: "normal", color: acc }}>mean something.</em></h2>
-              <p style={{ fontSize: "1rem", color: "hsl(270 15% 42%)", lineHeight: 1.75, margin: 0 }}>Every brand decision â your name, your pricing, your content, your customer experience â flows from one strategic foundation: positioning. Get that right, and everything else compounds. Get it wrong, and every taka you spend on marketing is wasted.</p>
+              <p style={{ fontSize: "1rem", color: "hsl(270 15% 42%)", lineHeight: 1.75, margin: 0 }}>Every brand decision — your name, your pricing, your content, your customer experience — flows from one strategic foundation: positioning. Get that right, and everything else compounds. Get it wrong, and every taka you spend on marketing is wasted.</p>
             </ScrollReveal>
             <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
               {[
                 { icon: <Lightbulb size={20} style={{ color: acc }} />, title: "Positioning before execution", desc: "Before you run a single ad or post a single reel, define exactly who you serve, what you offer, and why your market should choose you." },
-                { icon: <Zap size={20} style={{ color: acc }} />, title: "Systems before tactics", desc: "Tactics without systems produce unpredictable results. We build the strategic architecture first â so every tactic you deploy is connected to a clear growth logic." },
+                { icon: <Zap size={20} style={{ color: acc }} />, title: "Systems before tactics", desc: "Tactics without systems produce unpredictable results. We build the strategic architecture first — so every tactic you deploy is connected to a clear growth logic." },
               ].map(({ icon, title, desc }, i) => (
                 <ScrollReveal key={title} delay={i * 150}>
                   <div style={{ background: "white", border: "1px solid hsl(270 20% 88%)", borderRadius: "1rem", padding: "1.5rem", display: "flex", gap: "1rem", alignItems: "flex-start" }}>
@@ -159,9 +159,9 @@ export default async function Home() {
           </div></ScrollReveal>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "1.5rem" }}>
             {[
-              { icon: <Target size={22} style={{ color: acc }} />, title: "Brand Strategy & Positioning", desc: "Define who you are, who you serve, and why they should choose you â before spending another taka on marketing." },
+              { icon: <Target size={22} style={{ color: acc }} />, title: "Brand Strategy & Positioning", desc: "Define who you are, who you serve, and why they should choose you — before spending another taka on marketing." },
               { icon: <Users size={22} style={{ color: acc }} />, title: "Personal Brand Architecture", desc: "Build a personal brand that creates authority, attracts opportunities, and compounds over time. Strategy, not just aesthetics." },
-              { icon: <TrendingUp size={22} style={{ color: acc }} />, title: "Business System Design", desc: "Build the operational and marketing systems that turn a good idea into a scalable business â from offer structure to customer journey." },
+              { icon: <TrendingUp size={22} style={{ color: acc }} />, title: "Business System Design", desc: "Build the operational and marketing systems that turn a good idea into a scalable business — from offer structure to customer journey." },
             ].map(({ icon, title, desc }, i) => (
               <ScrollReveal key={title} delay={i * 120}>
                 <HoverCard style={{ ...cb, background: "hsl(270 30% 98%)", display: "flex", flexDirection: "column" }} hoverStyle={{ ...ch, background: "white", display: "flex", flexDirection: "column" }}>
@@ -187,7 +187,7 @@ export default async function Home() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: "1.5rem" }}>
             {[
               { n: "01", title: "Diagnose", desc: "We start with a free strategy diagnostic. I analyze your current brand, positioning, and growth system to identify the real constraint." },
-              { n: "02", title: "Strategize", desc: "Based on the diagnosis, we build a custom strategic blueprint â positioning, offer architecture, and growth roadmap." },
+              { n: "02", title: "Strategize", desc: "Based on the diagnosis, we build a custom strategic blueprint — positioning, offer architecture, and growth roadmap." },
               { n: "03", title: "Execute", desc: "You implement with clarity. Or, if you need hands-on support, we discuss TradeFigur's agency services for full execution." },
               { n: "04", title: "Scale", desc: "With the strategy working, we optimize, expand, and build systems that compound growth over time." },
             ].map(({ n, title, desc }, i) => (
@@ -250,14 +250,14 @@ export default async function Home() {
             <ScrollReveal><div style={{ textAlign: "center", marginBottom: "3rem" }}>
               <p style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "hsl(275 70% 78%)", marginBottom: "1rem" }}>Work With Me</p>
               <h2 style={{ fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 900, lineHeight: 1.15, letterSpacing: "-0.02em", color: "white", margin: "0 0 1rem" }}>Ready to stop guessing and start growing?</h2>
-              <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, margin: 0 }}>Book a free 30-minute Strategy Diagnostic. I&apos;ll identify the single biggest strategic gap holding your business back â no pitch, no pressure, just clarity.</p>
+              <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.7, margin: 0 }}>Book a free 30-minute Strategy Diagnostic. I&apos;ll identify the single biggest strategic gap holding your business back — no pitch, no pressure, just clarity.</p>
             </div></ScrollReveal>
             <ScrollReveal delay={150}>
               <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: "1.5rem", padding: "2.5rem", backdropFilter: "blur(10px)" }}>
                 <ContactForm tier="diagnostic" />
               </div>
               <div style={{ textAlign: "center", marginTop: "1.75rem" }}>
-                <a href="https://wa.me/8801XXXXXXXXX" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", color: "rgba(255,255,255,0.65)", fontSize: "0.9rem", textDecoration: "none", fontWeight: 600 }}>Or message me directly on WhatsApp â</a>
+                <a href="https://wa.me/8801XXXXXXXXX" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", color: "rgba(255,255,255,0.65)", fontSize: "0.9rem", textDecoration: "none", fontWeight: 600 }}>Or message me directly on WhatsApp →</a>
               </div>
             </ScrollReveal>
           </div>
