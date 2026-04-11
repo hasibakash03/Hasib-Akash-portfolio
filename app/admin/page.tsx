@@ -1,4 +1,4 @@
-import { auth } from "@/lib/auth";
+"use client";
 import Link from "next/link";
 import { FileText, FolderOpen, Inbox, Tag, HelpCircle, Settings, ArrowRight } from "lucide-react";
 
@@ -13,8 +13,7 @@ const quickLinks = [
   { href: "/admin/settings", label: "Site Settings", desc: "Global site configuration", icon: Settings, color: "hsl(268 45% 90%)" },
 ];
 
-export default async function AdminDashboard() {
-  const session = await auth();
+export default function AdminDashboard() {
 
   return (
     <div>
