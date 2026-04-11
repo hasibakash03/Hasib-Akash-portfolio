@@ -271,3 +271,139 @@ export async function submitContactFormFull(data: {
 
   return { success: true };
 }
+
+// ── Problem Cards ─────────────────────────────────────
+export async function getProblemCards() {
+  return db.select().from(problemCards).orderBy(problemCards.sortOrder);
+}
+
+export async function upsertProblemCard(data: { id?: number; iconName: string; title: string; description: string; sortOrder: number }) {
+  await requireAdmin();
+  if (data.id) {
+    await db.update(problemCards).set(data).where(eq(problemCards.id, data.id));
+  } else {
+    await db.insert(problemCards).values(data);
+  }
+  revalidatePath("/");
+  return { success: true };
+}
+
+export async function deleteProblemCard(id: number) {
+  await requireAdmin();
+  await db.delete(problemCards).where(eq(problemCards.id, id));
+  revalidatePath("/");
+  return { success: true };
+}
+
+// ── Insight Section ───────────────────────────────────
+export async function getInsight() {
+  const rows = await db.select().from(insight).limit(1);
+  return rows[0] || null;
+}
+
+export async function updateInsight(data: {
+  eyebrow: string; heading: string; body: string;
+  card1Title: string; card1Desc: string; card2Title: string; card2Desc: string;
+}) {
+  await requireAdmin();
+  const existing = await db.select().from(insight).limit(1);
+  if (existing.length > 0) {
+    await db.update(insight).set({ ...data, updatedAt: new Date() }).where(eq(insight.id, existing[0].id));
+  } else {
+    await db.insert(insight).values(data);
+  }
+  revalidatePath("/");
+  return { success: true };
+}
+
+// ── Service Cards ─────────────────────────────────────
+export async function getServiceCards() {
+  return db.select().from(serviceCards).orderBy(serviceCards.sortOrder);
+}
+
+export async function upsertServiceCard(data: { id?: number; iconName: string; title: string; description: string; ctaLink: string; sortOrder: number }) {
+  await requireAdmin();
+  if (data.id) {
+    await db.update(serviceCards).set(data).where(eq(serviceCards.id, data.id));
+  } else {
+    await db.insert(serviceCards).values(data);
+  }
+  revalidatePath("/");
+  return { success: true };
+}
+
+export async function deleteServiceCard(id: number) {
+  await requireAdmin();
+  await db.delete(serviceCards).where(eq(serviceCards.id, id));
+  revalidatePath("/");
+  return { success: true };
+}
+
+// ── Process Steps ─────────────────────────────────────
+export async function getProcessSteps() {
+  return db.select().from(processSteps).orderBy(processSteps.stepNumber);
+}
+
+export async function upsertProcessStep(data: { id?: number; stepNumber: string; title: string; description: string }) {
+  await requireAdmin();
+  if (data.id) {
+    await db.update(processSteps).set(data).where(eq(processSteps.id, data.id));
+  } else {
+    await db.insert(processSteps).values(data);
+  }
+  revalidatePath("/");
+  return { success: true };
+}
+
+export async function deleteProcessStep(id: number) {
+  await requireAdmin();
+  await db.delete(processSteps).where(eq(processSteps.id, id));
+  revalidatePath("/");
+  return { success: true };
+}
+
+// ── About ─────────────────────────────────────────────
+export async function getAbout() {
+  const rows = await db.select().from(about).limit(1);
+  return rows[0] || null;
+}
+
+export async function updateAbout(data: {
+  photoUrl?: string; heading: string; bioText: string;
+  badge1Title: string; badge1Desc: string;
+  badge2Title: string; badge2Desc: string;
+  badge3Title: string; badge3Desc: string;
+}) {
+  await requireAdmin();
+  const existing = await db.select().from(about).limit(1);
+  if (existing.length > 0) {
+    await db.update(about).set({ ...data, updatedAt: new Date() }).where(eq(about.id, existing[0].id));
+  } else {
+    await db.insert(about).values(data);
+  }
+  revalidatePath("/");
+  return { success: true };
+}
+
+// ── Stats ─────────────────────────────────────────────
+export async function getStats() {
+  return db.select().from(stats).orderBy(stats.sortOrder);
+}
+
+export async function upsertStat(data: { id?: number; numberText: string; label: string; sortOrder: number }) {
+  await requireAdmin();
+  if (data.id) {
+    await db.update(stats).set(data).where(eq(stats.id, data.id));
+  } else {
+    await db.insert(stats).values(data);
+  }
+  revalidatePath("/");
+  return { success: true };
+}
+
+export async function deleteStat(id: number) {
+  await requireAdmin();
+  await db.delete(stats).where(eq(stats.id, id));
+  revalidatePath("/");
+  return { success: true };
+}
