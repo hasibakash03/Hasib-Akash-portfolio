@@ -30,7 +30,7 @@ export default function OffersAdmin() {
 
   return (
     <div>
-      <PageHeader title="Consultation Offers" description="Manage the 3 offer tiers on the consult page." action={
+      <PageHeader title="Consultation Offers" description="Manage the 4 offer tiers on the consult page." action={
         <button onClick={() => setEditing({ ...blank(), includes: "" })} style={{ padding: "0.6rem 1.25rem", background: "hsl(275 70% 55%)", color: "white", borderRadius: "0.625rem", fontWeight: 700, fontSize: "0.85rem", border: "none", cursor: "pointer", fontFamily: "Urbanist,sans-serif" }}>+ Add Offer</button>
       } />
 

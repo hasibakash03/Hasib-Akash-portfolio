@@ -9,10 +9,10 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Work With Me",
   description:
-    "Three ways to work with Hasib Akash — from a free 30-minute Strategy Diagnostic to a full Growth Strategy Intensive. Strategy-first consulting for Bangladeshi founders.",
+    "Four ways to work with Hasib Akash — from a free Cold Client Audit to a Full Stack AI-powered positioning system. Strategy-first consulting for Bangladeshi founders.",
   openGraph: {
     title: "Work With Me — Hasib Akash",
-    description: "Book a free Strategy Diagnostic. No pitch, no pressure — just clarity on what's holding your business back.",
+    description: "Book a free Cold Client Audit. No pitch, no pressure — just clarity on exactly why cold clients aren't choosing you.",
     images: [{ url: "/og?title=Strategic+consulting+for+founders+who+are+done+guessing&type=home", width: 1200, height: 630 }],
   },
 };
@@ -25,9 +25,10 @@ const consultSchema = {
   serviceType: "Brand Strategy & Growth Consulting",
   areaServed: { "@type": "Country", name: "Bangladesh" },
   offers: [
-    { "@type": "Offer", name: "Strategy Diagnostic", price: "0", priceCurrency: "BDT", description: "Free 30-minute strategy call" },
-    { "@type": "Offer", name: "Brand Blueprint Session", price: "9900", priceCurrency: "BDT", description: "90-minute deep-dive with Brand Blueprint document" },
-    { "@type": "Offer", name: "Growth Strategy Intensive", price: "29900", priceCurrency: "BDT", description: "3 sessions over 2 weeks with complete Growth Strategy document" },
+    { "@type": "Offer", name: "Cold Client Audit", price: "0", priceCurrency: "BDT", description: "Free 30-minute cold client gap diagnosis call" },
+    { "@type": "Offer", name: "Brand Blueprint Session", price: "9900", priceCurrency: "BDT", description: "90-minute deep-dive with Brand Blueprint document delivered after" },
+    { "@type": "Offer", name: "Cold Client Sprint", price: "19900", priceCurrency: "BDT", description: "2-week done-with-you positioning system to attract cold clients" },
+    { "@type": "Offer", name: "Full Stack — Sprint + AI Employee System", price: "39900", priceCurrency: "BDT", description: "Cold Client Sprint plus custom AI system built for your business" },
   ],
 };
 
@@ -57,7 +58,7 @@ export default function ConsultPage() {
               Strategic consulting for founders who are done guessing.
             </h1>
             <p style={{ fontSize: "1.05rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.75, margin: "0 0 2.5rem", maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>
-              Three ways to work together — from a free diagnostic to a full growth strategy. Pick the level that matches where you are.
+              Four ways to work together — from a free audit to a full AI-powered growth system. Pick the level that matches where you are.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", justifyContent: "center", flexWrap: "wrap" }}>
               {["No long-term contracts", "Guaranteed results", "Strategy-first always"].map(t => (

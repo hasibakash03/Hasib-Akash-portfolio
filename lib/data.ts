@@ -162,22 +162,3 @@ export const fetchSiteSettings = cache(async () => {
   };
 });
 
-// ── About Section ─────────────────────────────────────
-export const fetchAbout = cache(async () => {
-  try {
-    const { db, about } = await import("@/db");
-    const rows = await db.select().from(about).limit(1);
-    if (rows[0]) return rows[0];
-  } catch {}
-  return {
-    photoUrl: null as string | null,
-    heading: "Hasib Akash",
-    bioText: "Brand strategist from Chattogram, Bangladesh. Founder of TradeFigur. I study the frameworks that actually move businesses forward — Hormozi, Cialdini, Ries & Trout, Schwartz — and apply them with precision to brands that are ready to stop guessing and start growing. Not a marketer who learned strategy. A strategist who executes.",
-    badge1Title: "Framework-Driven",
-    badge1Desc: "Every recommendation backed by tested strategic frameworks",
-    badge2Title: "Bangladesh-First",
-    badge2Desc: "Built for the Bangladeshi market, not imported Western templates",
-    badge3Title: "Strategy Before Execution",
-    badge3Desc: "We don't touch ads or content until the positioning is right",
-  };
-});

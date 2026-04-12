@@ -408,27 +408,3 @@ export async function deleteStat(id: number) {
   return { success: true };
 }
 
-// ── About Section ─────────────────────────────────────
-export async function getAbout() {
-  try {
-    const rows = await db.select().from(about).limit(1);
-    return rows[0] || null;
-  } catch { return null; }
-}
-
-export async function updateAbout(data: {
-  photoUrl?: string; heading: string; bioText: string;
-  badge1Title: string; badge1Desc: string;
-  badge2Title: string; badge2Desc: string;
-  badge3Title: string; badge3Desc: string;
-}) {
-  await requireAdmin();
-  const existing = await db.select().from(about).limit(1);
-  if (existing.length > 0) {
-    await db.update(about).set({ ...data, updatedAt: new Date() }).where(eq(about.id, existing[0].id));
-  } else {
-    await db.insert(about).values(data);
-  }
-  revalidatePath("/");
-  return { success: true };
-}

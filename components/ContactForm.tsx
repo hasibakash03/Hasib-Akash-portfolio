@@ -90,9 +90,10 @@ export default function ContactForm({ tier }: { tier?: string }) {
           <label style={{ display: "block", fontSize: "0.75rem", fontWeight: 700, color: "rgba(255,255,255,0.55)", marginBottom: "0.4rem", letterSpacing: "0.06em" }}>TIER INTEREST *</label>
           <select name="tier" value={form.tier} onChange={ch} required className="form-input">
             <option value="">Select tier...</option>
-            <option value="diagnostic">Strategy Diagnostic (Free)</option>
+            <option value="audit">Cold Client Audit (Free)</option>
             <option value="blueprint">Brand Blueprint (9,900৳)</option>
-            <option value="intensive">Growth Intensive (29,900৳)</option>
+            <option value="sprint">Cold Client Sprint (19,900৳)</option>
+            <option value="fullstack">Full Stack (39,900৳)</option>
           </select>
         </div>
       </div>
