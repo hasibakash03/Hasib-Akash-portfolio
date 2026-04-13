@@ -408,3 +408,49 @@ export async function deleteStat(id: number) {
   return { success: true };
 }
 
+
+// ── Doctor Audit Form Submission ──────────────────────
+export async function submitDoctorAuditForm(data: {
+  name: string;
+  phone: string;
+  specialty: string;
+  city: string;
+  challenge: string;
+}) {
+  const row = {
+    name: data.name,
+    email: data.phone,                  // no email collected; phone stored here so dashboard WhatsApp button works
+    phone: data.phone,
+    businessName: data.specialty,       // "Business" column shows specialty in dashboard
+    website: data.city,                 // optional column repurposed for city
+    revenueRange: "doctor-audit",       // identifies submission type
+    challenge: data.challenge,
+    tierInterest: "doctor-landing",     // "Tier" column source identifier in admin dashboard
+    notes: `Source: doctor-landing | Specialty: ${data.specialty} | City: ${data.city}`,
+  };
+
+  try {
+    await db.insert(formSubmissions).values(row);
+  } catch (err) {
+    console.error("Doctor form DB error:", err);
+    // Continue to email even if DB fails
+  }
+
+  try {
+    const { sendSubmissionNotification } = await import("@/lib/resend");
+    await sendSubmissionNotification({
+      name: data.name,
+      email: data.phone,
+      phone: data.phone,
+      businessName: `${data.specialty} · ${data.city}`,
+      website: data.city,
+      revenueRange: "doctor-audit",
+      challenge: data.challenge,
+      tierInterest: "doctor-landing",
+    });
+  } catch (err) {
+    console.error("Doctor form email error:", err);
+  }
+
+  return { success: true };
+}

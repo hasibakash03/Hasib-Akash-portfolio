@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import DoctorNavbar from "@/components/doctor/Navbar";
 import ScrollReveal from "@/components/ScrollReveal";
+import AuditForm from "@/components/doctor/AuditForm";
 
 export const metadata: Metadata = {
   title: "Personal Brand Strategy for Doctors | Hasib Akash",
@@ -34,34 +35,30 @@ export default function DoctorPage() {
         .doc-proof-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 1.25rem; padding: 2rem 1.75rem; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
         .doc-proof-label { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 9999px; margin-bottom: 1.25rem; }
 
-        /* Story section */
         .doc-story-grid { display: grid; grid-template-columns: 380px 1fr; gap: 5rem; align-items: start; }
         .doc-story-p { font-size: 0.975rem; color: hsl(270 15% 38%); line-height: 1.9; margin: 0 0 1.1rem; }
         .doc-story-p:last-child { margin: 0; }
 
-        /* Offer section */
         .doc-offer-grid { display: grid; grid-template-columns: 1.15fr 1fr 0.9fr; gap: 1.25rem; align-items: start; }
         .doc-offer-card { border-radius: 1.25rem; padding: 2rem 1.75rem; transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .doc-offer-card-primary { background: rgba(255,255,255,0.1); border: 1.5px solid hsl(275 70% 65% / 0.6); }
-        .doc-offer-card-primary:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+        .doc-offer-card-primary   { background: rgba(255,255,255,0.1);  border: 1.5px solid hsl(275 70% 65% / 0.6); }
         .doc-offer-card-secondary { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); }
-        .doc-offer-card-secondary:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(0,0,0,0.25); }
-        .doc-offer-card-anchor { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); }
+        .doc-offer-card-anchor    { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); }
+        .doc-offer-card-primary:hover,.doc-offer-card-secondary:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
         .doc-offer-btn { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.8rem 1.5rem; background: hsl(275 70% 55%); color: white; border-radius: 9999px; font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease; width: 100%; justify-content: center; box-shadow: 0 4px 16px hsl(275 70% 55% / 0.35); }
         .doc-offer-btn:hover { background: hsl(275 70% 48%) !important; transform: translateY(-1px); box-shadow: 0 8px 24px hsl(275 70% 55% / 0.45); }
         .doc-offer-link { font-size: 0.875rem; font-weight: 700; color: hsl(275 70% 76%); text-decoration: none; display: inline-flex; align-items: center; gap: 0.3rem; transition: color 0.2s; }
         .doc-offer-link:hover { color: white; }
 
-        /* Deliverables */
         .doc-deliv-card { background: white; border: 1.5px solid hsl(270 20% 88%); border-radius: 1rem; padding: 1.75rem; transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease; }
         .doc-deliv-card:hover { border-color: hsl(275 70% 55%); box-shadow: 0 8px 28px hsl(275 70% 55% / 0.12); transform: translateY(-3px); }
 
         @media (max-width: 900px) {
-          .doc-story-grid     { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
-          .doc-offer-grid     { grid-template-columns: 1fr !important; }
-          .doc-pain-grid      { grid-template-columns: 1fr !important; }
-          .doc-proof-grid     { grid-template-columns: 1fr !important; }
-          .doc-deliv-grid     { grid-template-columns: 1fr !important; }
+          .doc-story-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+          .doc-offer-grid { grid-template-columns: 1fr !important; }
+          .doc-pain-grid  { grid-template-columns: 1fr !important; }
+          .doc-proof-grid { grid-template-columns: 1fr !important; }
+          .doc-deliv-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
 
@@ -223,9 +220,7 @@ export default function DoctorPage() {
                 </h2>
               </div>
             </ScrollReveal>
-
             <div className="doc-story-grid">
-              {/* Left — photo + byline */}
               <ScrollReveal delay={60}>
                 <div style={{ position: "sticky", top: "6rem" }}>
                   <div style={{ borderRadius: "1.25rem", overflow: "hidden", boxShadow: "0 24px 64px rgba(80,20,140,0.18), 0 4px 16px rgba(0,0,0,0.1)", aspectRatio: "3/4", position: "relative", maxHeight: 520 }}>
@@ -239,17 +234,11 @@ export default function DoctorPage() {
                     />
                   </div>
                   <div style={{ marginTop: "1.25rem", paddingLeft: "0.25rem" }}>
-                    <p style={{ fontSize: "0.82rem", fontWeight: 700, color: "hsl(270 20% 12%)", margin: 0, lineHeight: 1.6 }}>
-                      Hasib Akash &nbsp;&middot;&nbsp; Brand Strategist
-                    </p>
-                    <p style={{ fontSize: "0.78rem", fontWeight: 600, color: "hsl(270 15% 52%)", margin: "0.2rem 0 0" }}>
-                      Founder, TradeFigur &nbsp;&middot;&nbsp; Chittagong
-                    </p>
+                    <p style={{ fontSize: "0.82rem", fontWeight: 700, color: "hsl(270 20% 12%)", margin: 0, lineHeight: 1.6 }}>Hasib Akash &nbsp;&middot;&nbsp; Brand Strategist</p>
+                    <p style={{ fontSize: "0.78rem", fontWeight: 600, color: "hsl(270 15% 52%)", margin: "0.2rem 0 0" }}>Founder, TradeFigur &nbsp;&middot;&nbsp; Chittagong</p>
                   </div>
                 </div>
               </ScrollReveal>
-
-              {/* Right — story copy */}
               <ScrollReveal delay={120}>
                 <div style={{ paddingTop: "0.5rem" }}>
                   <p className="doc-story-p">From childhood, I wanted to be a doctor. Not for status. Because I wanted to help people with something real.</p>
@@ -274,7 +263,6 @@ export default function DoctorPage() {
         <section id="offer" style={{ background: "linear-gradient(135deg, hsl(270 60% 10%) 0%, hsl(275 65% 20%) 100%)", padding: "7rem 1.5rem", position: "relative", overflow: "hidden" }}>
           <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)", backgroundSize: "60px 60px", pointerEvents: "none" }} />
           <div aria-hidden="true" style={{ position: "absolute", bottom: "-20%", left: "50%", transform: "translateX(-50%)", width: 700, height: 700, borderRadius: "50%", background: "radial-gradient(circle, hsl(275 70% 55% / 0.15) 0%, transparent 65%)", pointerEvents: "none" }} />
-
           <div style={{ maxWidth: 1100, margin: "0 auto", position: "relative", zIndex: 1 }}>
             <ScrollReveal>
               <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
@@ -284,26 +272,18 @@ export default function DoctorPage() {
                 </h2>
               </div>
             </ScrollReveal>
-
             <div className="doc-offer-grid">
-
-              {/* CARD 1 — Primary, largest */}
               <ScrollReveal delay={0}>
                 <div className="doc-offer-card doc-offer-card-primary">
                   <p style={{ fontSize: "0.66rem", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "hsl(275 70% 78%)", margin: "0 0 1.25rem" }}>Start here</p>
                   <h3 style={{ fontSize: "1.35rem", fontWeight: 900, color: "white", margin: "0 0 0.5rem", letterSpacing: "-0.02em" }}>Cold Client Audit</h3>
                   <p style={{ fontSize: "2.2rem", fontWeight: 900, color: "white", margin: "0 0 1.25rem", letterSpacing: "-0.03em", lineHeight: 1 }}>
-                    Free
-                    <span style={{ fontSize: "0.9rem", fontWeight: 600, color: "rgba(255,255,255,0.45)", letterSpacing: 0, marginLeft: "0.5rem" }}>/ 30 min call</span>
+                    Free<span style={{ fontSize: "0.9rem", fontWeight: 600, color: "rgba(255,255,255,0.45)", letterSpacing: 0, marginLeft: "0.5rem" }}>/ 30 min call</span>
                   </p>
-                  <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.8, margin: "0 0 2rem" }}>
-                    I review your current position, identify the exact gap, and show you what&apos;s holding your practice back. No cost. No obligation. If it&apos;s not the right fit, I&apos;ll tell you directly.
-                  </p>
+                  <p style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.8, margin: "0 0 2rem" }}>I review your current position, identify the exact gap, and show you what&apos;s holding your practice back. No cost. No obligation. If it&apos;s not the right fit, I&apos;ll tell you directly.</p>
                   <a href="#audit-form" className="doc-offer-btn">Book Your Free Audit &rarr;</a>
                 </div>
               </ScrollReveal>
-
-              {/* CARD 2 — Secondary, "Most chosen" */}
               <ScrollReveal delay={100}>
                 <div className="doc-offer-card doc-offer-card-secondary">
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1.25rem" }}>
@@ -311,31 +291,20 @@ export default function DoctorPage() {
                     <span style={{ fontSize: "0.65rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase" as const, padding: "0.25rem 0.65rem", background: "hsl(275 70% 55%)", color: "white", borderRadius: 9999 }}>Most chosen</span>
                   </div>
                   <h3 style={{ fontSize: "1.2rem", fontWeight: 900, color: "white", margin: "0 0 0.5rem", letterSpacing: "-0.02em" }}>Revenue Positioning Sprint</h3>
-                  <p style={{ fontSize: "1.9rem", fontWeight: 900, color: "white", margin: "0 0 1.25rem", letterSpacing: "-0.03em", lineHeight: 1 }}>
-                    &#2547;19,900
-                  </p>
-                  <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.8, margin: "0 0 2rem" }}>
-                    2 weeks. Revenue Positioning Document, messaging hierarchy, 10 authority content angles, DM conversion script, 30-day content brief. Dr. Rasel&apos;s result came from this exact system.
-                  </p>
+                  <p style={{ fontSize: "1.9rem", fontWeight: 900, color: "white", margin: "0 0 1.25rem", letterSpacing: "-0.03em", lineHeight: 1 }}>&#2547;19,900</p>
+                  <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.8, margin: "0 0 2rem" }}>2 weeks. Revenue Positioning Document, messaging hierarchy, 10 authority content angles, DM conversion script, 30-day content brief. Dr. Rasel&apos;s result came from this exact system.</p>
                   <a href="#deliverables" className="doc-offer-link">See what&apos;s included &darr;</a>
                 </div>
               </ScrollReveal>
-
-              {/* CARD 3 — Anchor, smallest */}
               <ScrollReveal delay={200}>
                 <div className="doc-offer-card doc-offer-card-anchor">
                   <p style={{ fontSize: "0.66rem", fontWeight: 800, letterSpacing: "0.18em", textTransform: "uppercase" as const, color: "rgba(255,255,255,0.4)", margin: "0 0 1.25rem" }}>The full build</p>
                   <h3 style={{ fontSize: "1.1rem", fontWeight: 900, color: "rgba(255,255,255,0.85)", margin: "0 0 0.5rem", letterSpacing: "-0.02em" }}>Sprint + AI Infrastructure</h3>
-                  <p style={{ fontSize: "1.7rem", fontWeight: 900, color: "rgba(255,255,255,0.75)", margin: "0 0 1.25rem", letterSpacing: "-0.03em", lineHeight: 1 }}>
-                    &#2547;39,900
-                  </p>
-                  <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.8, margin: "0 0 1.75rem" }}>
-                    Everything in the sprint, plus five AI systems built around your practice — patient follow-up, appointment reminders, content scheduling, referral tracking.
-                  </p>
+                  <p style={{ fontSize: "1.7rem", fontWeight: 900, color: "rgba(255,255,255,0.75)", margin: "0 0 1.25rem", letterSpacing: "-0.03em", lineHeight: 1 }}>&#2547;39,900</p>
+                  <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.5)", lineHeight: 1.8, margin: "0 0 1.75rem" }}>Everything in the sprint, plus five AI systems built around your practice — patient follow-up, appointment reminders, content scheduling, referral tracking.</p>
                   <p style={{ fontSize: "0.78rem", fontWeight: 600, color: "rgba(255,255,255,0.3)", fontStyle: "italic", margin: 0 }}>Discussed after audit call.</p>
                 </div>
               </ScrollReveal>
-
             </div>
           </div>
         </section>
@@ -347,15 +316,10 @@ export default function DoctorPage() {
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <ScrollReveal>
               <div style={{ marginBottom: "3.5rem" }}>
-                <h2 style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.5rem)", fontWeight: 900, lineHeight: 1.2, letterSpacing: "-0.025em", color: "hsl(270 20% 12%)", margin: "0 0 0.5rem" }}>
-                  What you receive in the sprint.
-                </h2>
-                <p style={{ fontSize: "1rem", color: "hsl(270 15% 48%)", margin: 0, lineHeight: 1.6 }}>
-                  Six deliverables. Built around your practice. Delivered in two weeks.
-                </p>
+                <h2 style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.5rem)", fontWeight: 900, lineHeight: 1.2, letterSpacing: "-0.025em", color: "hsl(270 20% 12%)", margin: "0 0 0.5rem" }}>What you receive in the sprint.</h2>
+                <p style={{ fontSize: "1rem", color: "hsl(270 15% 48%)", margin: 0, lineHeight: 1.6 }}>Six deliverables. Built around your practice. Delivered in two weeks.</p>
               </div>
             </ScrollReveal>
-
             <div className="doc-deliv-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
               {[
                 { n: "01", title: "Revenue Positioning Document", body: "Your market position defined. Who you serve. What makes you the obvious choice." },
@@ -377,7 +341,122 @@ export default function DoctorPage() {
           </div>
         </section>
 
-        {/* Future sections below — id="audit-form" goes on the contact section */}
+        {/* ====================================================
+            SECTION 8 — EXCLUSION
+        ==================================================== */}
+        <section id="exclusion" style={{ background: "white", padding: "6rem 1.5rem", borderTop: "1px solid hsl(270 20% 92%)" }}>
+          <div style={{ maxWidth: 680, margin: "0 auto" }}>
+            <ScrollReveal>
+              <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 900, lineHeight: 1.1, letterSpacing: "-0.03em", color: "hsl(270 20% 12%)", margin: "0 0 2rem" }}>
+                I am not an agency.
+              </h2>
+              <div style={{ fontSize: "1rem", color: "hsl(270 15% 40%)", lineHeight: 1.9 }}>
+                <p style={{ margin: "0 0 0.75rem" }}>I don&apos;t manage your social media. I don&apos;t produce your content. I don&apos;t run your ads. I don&apos;t design your logo. I don&apos;t do SEO.</p>
+                <p style={{ margin: "0 0 0.75rem" }}>I build the strategy. You or your team executes it.</p>
+                <p style={{ margin: "0 0 2rem" }}>If you need execution support after the sprint, I&apos;ll refer you to a trusted agency and negotiate the terms on your behalf.</p>
+              </div>
+              <div style={{ display: "inline-block", padding: "1rem 1.5rem", background: "hsl(270 30% 97%)", borderLeft: "3px solid hsl(275 70% 55%)", borderRadius: "0 0.5rem 0.5rem 0" }}>
+                <p style={{ fontSize: "1.1rem", fontWeight: 800, color: "hsl(275 70% 38%)", margin: 0, letterSpacing: "-0.01em" }}>
+                  You are paying for thinking. Not doing.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* ====================================================
+            SECTION 9 — GUARANTEE
+        ==================================================== */}
+        <section id="guarantee" style={{ background: "hsl(270 60% 8%)", padding: "6rem 1.5rem", position: "relative", overflow: "hidden" }}>
+          <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px)", backgroundSize: "28px 28px", pointerEvents: "none" }} />
+          <div aria-hidden="true" style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, hsl(275 70% 40% / 0.15) 0%, transparent 65%)", pointerEvents: "none" }} />
+          <div style={{ maxWidth: 680, margin: "0 auto", position: "relative", zIndex: 1 }}>
+            <ScrollReveal>
+              {/* Shield icon */}
+              <div style={{ marginBottom: "2rem" }}>
+                <div style={{ width: 52, height: 52, borderRadius: "0.875rem", background: "hsl(275 70% 55% / 0.18)", border: "1px solid hsl(275 70% 55% / 0.35)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" stroke="hsl(275 70% 76%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M9 12l2 2 4-4" stroke="hsl(275 70% 76%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+              </div>
+              <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 900, lineHeight: 1.12, letterSpacing: "-0.03em", color: "white", margin: "0 0 1.75rem" }}>
+                If it doesn&apos;t work,{" "}
+                <span style={{ color: "hsl(275 70% 76%)" }}>I keep working.</span>
+              </h2>
+              <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.62)", lineHeight: 1.9, margin: "0 0 1rem" }}>
+                Complete both sessions and implement the system. If you don&apos;t receive a cold patient enquiry within 30 days, I continue working with you weekly — at no additional cost — until you do.
+              </p>
+              <p style={{ fontSize: "1rem", color: "rgba(255,255,255,0.62)", lineHeight: 1.9, margin: "0 0 2.5rem" }}>
+                I don&apos;t charge for positioning that doesn&apos;t perform.
+              </p>
+              <a href="#audit-form" className="doc-cta-btn" style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", padding: "0.875rem 1.875rem", background: "hsl(275 70% 55%)", color: "white", borderRadius: 9999, fontWeight: 700, fontSize: "0.95rem", textDecoration: "none", letterSpacing: "0.01em", boxShadow: "0 4px 18px hsl(275 70% 55% / 0.35)", transition: "background 0.2s ease, transform 0.18s ease, box-shadow 0.2s ease" }}>
+                Book Your Free Audit &rarr;
+              </a>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* ====================================================
+            SECTION 10 — FORM
+        ==================================================== */}
+        <section id="audit-form" style={{ background: "linear-gradient(135deg, hsl(270 60% 12%) 0%, hsl(275 65% 22%) 50%, hsl(280 60% 30%) 100%)", padding: "7rem 1.5rem", position: "relative", overflow: "hidden" }}>
+          <div aria-hidden="true" style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px)", backgroundSize: "60px 60px", pointerEvents: "none" }} />
+          <div aria-hidden="true" style={{ position: "absolute", top: "-10%", right: "-5%", width: 480, height: 480, borderRadius: "50%", background: "radial-gradient(circle, hsl(275 70% 55% / 0.22) 0%, transparent 65%)", pointerEvents: "none" }} />
+          <div style={{ maxWidth: 660, margin: "0 auto", position: "relative", zIndex: 1 }}>
+            <ScrollReveal>
+              <div style={{ textAlign: "center", marginBottom: "2.75rem" }}>
+                <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 900, lineHeight: 1.1, letterSpacing: "-0.03em", color: "white", margin: "0 0 0.5rem" }}>
+                  Your patients are already out there.
+                </h2>
+                <p style={{ fontSize: "clamp(1.1rem, 2.5vw, 1.5rem)", fontWeight: 700, color: "hsl(275 70% 78%)", margin: "0 0 1.5rem", letterSpacing: "-0.01em" }}>
+                  They just don&apos;t know you yet.
+                </p>
+                <p style={{ fontSize: "0.975rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.8, margin: 0, maxWidth: 520, marginLeft: "auto", marginRight: "auto" }}>
+                  Start with a free 30-minute audit. I&apos;ll review your position, identify the gap, and show you exactly what needs to change. No pitch. No pressure. Just clarity.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={80}>
+              {/* Form card */}
+              <div style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.13)", borderRadius: "1.5rem", padding: "2.5rem 2rem", backdropFilter: "blur(14px)", WebkitBackdropFilter: "blur(14px)" }}>
+                <AuditForm />
+              </div>
+
+              {/* WhatsApp fallback — always visible */}
+              <div style={{ textAlign: "center", marginTop: "1.75rem" }}>
+                <a
+                  href="https://wa.me/8801560036454"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: "inline-flex", alignItems: "center", gap: "0.45rem", color: "rgba(255,255,255,0.5)", fontSize: "0.875rem", textDecoration: "none", fontWeight: 600, transition: "color 0.2s" }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  Prefer to message directly? WhatsApp: 01560036454
+                </a>
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+
+        {/* ====================================================
+            SECTION 11 — FOOTER
+        ==================================================== */}
+        <footer style={{ background: "hsl(270 60% 5%)", padding: "2rem 1.5rem", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto", textAlign: "center" }}>
+            <p style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.28)", margin: 0, fontWeight: 500, letterSpacing: "0.02em" }}>
+              &copy; 2026 Hasib Akash &nbsp;&middot;&nbsp; TradeFigur &nbsp;&middot;&nbsp;{" "}
+              <a href="https://hasibakash.tradefigur.com" style={{ color: "rgba(255,255,255,0.28)", textDecoration: "none" }}>
+                hasibakash.tradefigur.com
+              </a>
+            </p>
+          </div>
+        </footer>
+
       </main>
     </>
   );
