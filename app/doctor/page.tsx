@@ -159,13 +159,13 @@ export default function DoctorPage() {
                   <div className="doc-proof-label" style={{ background: "rgba(26,86,219,0.2)", color: "#93C5FD", border: "1px solid rgba(26,86,219,0.35)" }}>
                     <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#60A5FA", display: "inline-block", flexShrink: 0 }} />After
                   </div>
-                  <h3 style={{ fontFamily: "'Inter', sans-serif", fontSize: "1rem", fontWeight: 700, color: "white", margin: "0 0 0.75rem", letterSpacing: "-0.01em" }}>5 months. Zero paid ads.</h3>
+                  <h3 style={{ fontFamily: "'Inter', sans-serif", fontSize: "1rem", fontWeight: 700, color: "white", margin: "0 0 0.75rem", letterSpacing: "-0.01em" }}>5 months. Zero referrals.</h3>
                   <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.9rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.8, margin: "0 0 1.25rem" }}>
                     No ad budget. No content agency. A positioning system built around what made Dr. Rasel distinctly credible — and a strategy for making that credibility visible. Within 5 months, 30 new patients per month were arriving. They referenced specific content. They already trusted him. When asked why they chose him, the answer had changed:{" "}
                     <em style={{ color: "#93C5FD" }}>&ldquo;I&apos;ve been watching him.&rdquo;</em>
                   </p>
                   <div style={{ display: "flex", gap: "1.25rem", flexWrap: "wrap" as const }}>
-                    {[{ value: "+30", label: "patients/month" }, { value: "5mo", label: "to result" }, { value: "\u09F30", label: "ad spend" }].map((s) => (
+                    {[{ value: "+30", label: "patients/month" }, { value: "5mo", label: "to result" }, { value: "0", label: "referrals needed" }].map((s) => (
                       <div key={s.label}>
                         <p style={{ fontFamily: "'DM Serif Display', serif", fontWeight: 400, fontSize: "2rem", color: "#93C5FD", margin: 0, letterSpacing: "-0.02em", lineHeight: 1 }}>{s.value}</p>
                         <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "0.72rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", margin: "0.25rem 0 0", textTransform: "uppercase" as const, letterSpacing: "0.1em" }}>{s.label}</p>
@@ -178,7 +178,7 @@ export default function DoctorPage() {
             <ScrollReveal delay={140}>
               <div style={{ background: "#1A56DB", borderRadius: "0.5rem", padding: "1.1rem 2rem", textAlign: "center", marginBottom: "3rem" }}>
                 <p style={{ fontFamily: "'Inter', sans-serif", fontSize: "clamp(0.9rem, 2vw, 1.05rem)", fontWeight: 800, color: "white", margin: 0, letterSpacing: "0.04em" }}>
-                  +30 new patients / month &nbsp;&middot;&nbsp; 5 months &nbsp;&middot;&nbsp; 0 paid ads
+                  +30 new patients / month &nbsp;&middot;&nbsp; 5 months &nbsp;&middot;&nbsp; 0 referrals needed
                 </p>
               </div>
             </ScrollReveal>
