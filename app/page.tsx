@@ -48,7 +48,7 @@ export default async function Home() {
               {heroData.subheading}
             </p>
             <div className="hero-cta" style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "center" }}>
-              <Link href={heroData.ctaLink && heroData.ctaLink !== "#" ? heroData.ctaLink : "/consult"} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "1rem 2.25rem", background: acc, color: "white", borderRadius: 9999, fontWeight: 700, fontSize: "1rem", textDecoration: "none" }}>
+              <Link href="/consult" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "1rem 2.25rem", background: acc, color: "white", borderRadius: 9999, fontWeight: 700, fontSize: "1rem", textDecoration: "none" }}>
                 {heroData.ctaText} <ArrowRight size={18} />
               </Link>
               <Link href="/projects" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", padding: "1rem 2rem", background: "transparent", color: "rgba(255,255,255,0.8)", border: "1.5px solid rgba(255,255,255,0.25)", borderRadius: 9999, fontWeight: 600, fontSize: "0.95rem", textDecoration: "none" }}>
